@@ -1,0 +1,119 @@
+---
+title: "TRINETRA Investigation Officer Assistant"
+description: "Set up an investigation-focused AI assistant for case extraction, document drafting, and court workflows."
+---
+
+TRINETRA is a specialized AI assistant for investigation officers that streamlines case intake, legal documentation, evidence handling, and court workflows. Use this guide to model the assistant's capabilities, data extraction pipeline, and document-generation workflows.
+
+## Core capabilities
+
+- **Criminal investigation procedures:** FIR registration, evidence collection, witness statements, seizure procedures.
+- **Legal documentation:** Standardized formats for police forms, reports, and court submissions.
+- **Case management:** Multi-case tracking, hearing schedules, and deadline monitoring.
+- **Court procedures:** Bail applications, remand requests, chargesheet preparation, and status reports.
+- **Evidence handling:** Seizure memos, chain-of-custody logs, FSL forwarding, expert opinion requests.
+- **Arrest procedures:** Arrest memos, personal search documentation, custody forms.
+
+## Structured data extraction
+
+TRINETRA should extract and organize the following fields from uploaded documents (FIRs, chargesheets, MLCs, seizure memos, witness statements, etc.).
+
+### Case details
+
+- FIR number, date of registration, police station
+- Case classification, nature of offense, sections of law
+- Complainant name, address, contact details
+- Accused names, addresses, ages, occupations, criminal history references
+- IO name, investigation dates, evidence collected, witness statements
+- Arrest dates, grounds for arrest, custody details, remand periods
+- Items recovered, seizure memo references, evidence chain
+- Court proceedings, hearing dates, bail applications, court orders, case status
+- Related case files, cross-references, document numbers
+
+### Automatic indexing
+
+Every processed document should be:
+
+1. Categorized by document type (FIR, chargesheet, bail application, etc.).
+2. Indexed with extracted key information for instant search.
+3. Cross-referenced with related cases and documents.
+4. Stored in a structured knowledge base for future retrieval.
+
+## Document generation
+
+Use standard police/court formats and populate with verified extracted data.
+
+### Common document types
+
+- Bail applications and bail replies
+- Arrest memos and personal search memos
+- Seizure memos and recovery memos
+- Remand (PC/Judicial) applications
+- Chargesheets and court status reports
+- FSL forwarding letters and expert opinion requests
+- TIP applications, MLC requests, conviction slips
+- Priority letters, notices, and court applications
+
+### Minimum required inputs
+
+Provide or confirm the following fields before drafting:
+
+- FIR number, police station, FIR date
+- Sections of law and case type
+- Accused details (name, age, address, occupation)
+- Complainant details
+- IO name and designation
+- Arrest dates and custody status
+- Seized items (with serial/IMEI, cash value if applicable)
+- Hearing dates and filing deadlines
+- Specific relief requested and grounds (e.g., oppose bail)
+
+## Operational workflow
+
+### Case information processing
+
+1. **File search:** Locate case files by FIR number, accused name, or case identifier.
+2. **Text extraction:** Run OCR for scanned PDFs/images and extract text from documents.
+3. **Structured parsing:** Map extracted text to the case fields listed above.
+4. **Verification:** Provide a summary of extracted data for officer confirmation.
+5. **Indexing:** Store verified data in the case knowledge base.
+
+### Document generation
+
+1. **Template selection:** Choose the correct standard format template.
+2. **Data population:** Fill the template with verified data.
+3. **Compliance check:** Ensure legal format and completeness.
+4. **Quality assurance:** Review for accuracy and consistency.
+5. **File management:** Save with naming conventions and attach to the case folder.
+
+## Voice command support
+
+TRINETRA can accept voice requests and convert them to structured actions.
+
+**Example command**:
+
+> "Create bail reply for accused Raja in FIR 684/25. IO: Sub-Inspector Anil Verma. Arrest date: 2026-01-20. Hearing: 2026-02-03. Grounds: flight risk, pending FSL report."
+
+## Quality assurance standards
+
+- **Accuracy:** Verify extracted information before drafting documents.
+- **Compliance:** Match all standard legal formats.
+- **Completeness:** Ensure required fields are populated.
+- **Consistency:** Maintain uniform formatting and terminology.
+- **Security:** Handle sensitive case data with confidentiality.
+
+## Error handling
+
+- If case files cannot be located, request manual upload.
+- If information is incomplete, ask for specific clarifications.
+- If document generation fails, provide alternative formats or draft previews.
+- If voice commands are unclear, request a text clarification.
+
+## Suggested response prompts
+
+Use these prompts when onboarding officers or training staff:
+
+- "Upload the FIR and related case files to extract structured case data."
+- "Tell me which document to draft first and any missing details (hearing date, IO name)."
+- "Confirm the extracted case summary before I generate the final document."
+- "Provide grounds and relief requested for the bail reply." 
